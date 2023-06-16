@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Trombin'O'Clock</title>
-	</head>
-	<body>
-		<ul>
-			<% promos.forEach(promo => { %>
-			<li>
-				<a href="/promos/<%= promo.id %>"><%= promo.name %></a>
-			</li>
-			<% }); %>
-		</ul>
-	</body>
-</html>
+<%- include('partials/header') %>
+<ul>
+	<% promos.forEach(promo => { %>
+	<li>
+		<a href="/promos/<%= promo.id %>"><%= promo.name %></a>
+	</li>
+	<% }); %>
+</ul>
+<%- include('partials/footer') %>
