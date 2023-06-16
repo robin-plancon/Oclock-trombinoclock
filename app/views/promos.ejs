@@ -6,7 +6,12 @@
 		<title>Trombin'O'Clock</title>
 	</head>
 	<body>
-		<h1>Erreur 404</h1>
-		<p>La page demandée n'existe pas</p>
+		<ul>
+			<% promos.forEach(promo => { %>
+			<li>
+				<a href="/promos/<%= promo.id %>"><%= promo.name %></a>
+			</li>
+			<% }); %>
+		</ul>
 	</body>
 </html>
