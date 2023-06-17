@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<ul>
+	<% promoStudentsList.forEach(student => { %>
+	<li>
+			<img
+				src="<%= student.profile_picture_url %>"
+				alt="Photo de profil de <%= student.first_name %> <%= student.last_name %>"
+				class="student__profile-picture"
+			/>
+    <h3><%= student.first_name %> <%= student.last_name %></h3>
+    <p>Profil GitHub: <%= student.github_username %></p>
+	</li>
+	<% }); %>
+</ul>
+<%- include('partials/footer') %>

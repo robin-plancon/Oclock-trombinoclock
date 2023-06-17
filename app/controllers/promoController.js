@@ -8,7 +8,7 @@ const promoController = {
 	promoDetail: (req, res, next) => {
 		const id = parseInt(req.params.id, 10);
 		const promo = promos.find((promo) => promo.id === id);
-		if (!promo){
+		if (!promo) {
 			return next();
 		}
 		res.render('promoDetail', { promo });
