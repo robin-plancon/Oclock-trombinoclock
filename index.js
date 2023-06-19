@@ -1,7 +1,7 @@
 const express = require('express');
 const router = require('./app/router');
 const app = express();
-const PORT = 5050;
+const PORT = process.env.PORT || 5050;
 
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
