@@ -1,7 +1,8 @@
 <%- include('partials/header') %>
-<ul>
+<h1>Liste des promos</h1>
+<ul class="cards">
 	<% promos.forEach(promo => { %>
-	<li>
+	<li class="card card--label">
 		<a href="/promos/<%= promo.id %>"><%= promo.name %></a>
 	</li>
 	<% }); %>
