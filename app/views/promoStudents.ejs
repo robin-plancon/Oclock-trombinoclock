@@ -1,14 +1,19 @@
 <%- include('partials/header') %>
-<ul>
+<h1>Liste des étudiants de la promo : Zenith</h1>
+<ul class="cards">
 	<% promoStudentsList.forEach(student => { %>
-	<li>
-			<img
-				src="<%= student.profile_picture_url %>"
-				alt="Photo de profil de <%= student.first_name %> <%= student.last_name %>"
-				class="student__profile-picture"
-			/>
-    <h3><%= student.first_name %> <%= student.last_name %></h3>
-    <p>Profil GitHub: <%= student.github_username %></p>
+	<li class="card">
+		<a href="/students/<%= student.id %>">
+			<figure>
+				<img
+					src="<%= student.profile_picture_url %>"
+					alt="Photo de profil de <%= student.first_name %> <%= student.last_name %>"
+				/>
+				<figcaption>
+					<%= student.first_name %> <%= student.last_name %>
+				</figcaption>
+			</figure>
+		</a>
 	</li>
 	<% }); %>
 </ul>

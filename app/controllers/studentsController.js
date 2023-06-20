@@ -45,6 +45,23 @@ const studentsController = {
 				return next();
 			});
 	},
+	studentDetail: (req, res, next) => {
+		const id = parseInt(req.params.id, 10);
+		client
+			.query(`SELECT * FROM "student" WHERE "id" = ${id};`)
+			.then((result) => {
+				const student = result.rows[0];
+				if (!student) {
+					res.status(404);
+					return next();
+				}
+				res.render('student', { student });
+			})
+			.catch((error) => {
+				res.status.send(error);
+				return next();
+			});
+	},
 };
 
 module.exports = studentsController;
