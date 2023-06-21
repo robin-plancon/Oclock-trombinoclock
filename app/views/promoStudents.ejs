@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 <h1>Liste des étudiants de la promo : Zenith</h1>
 <ul class="cards">
-	<% promoStudentsList.forEach(student => { %>
+	<% result.forEach(student => { %>
 	<li class="card">
 		<a href="/students/<%= student.id %>">
 			<figure>

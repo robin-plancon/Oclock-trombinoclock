@@ -1,43 +1,27 @@
-// const promos = require('./../../data/promos.json');
-
-const { Client } = require('pg');
-
-const client = new Client(process.env.DATABASE_CONNECT);
-
-client.connect();
+const dataMapper = require('../dataMapper');
 
 const promoController = {
-	promoList: (req, res) => {
-		// client.query('SELECT * FROM "promo";', (error, result) => {
-		// 	if(error){
-		// 		return res.status.send(error);
-		// 	}
-		// 	const promos = result.rows;
-		// 	return res.render('promos', { promos });
-		// });
-		client.query('SELECT * FROM "promo";')
-		.then((result) => {
-				const promos = result.rows;
-				res.render('promos', { promos })
-		}).catch((error) => {
-				res.status.send(error);
-		});
-	},
+  promoList: async (req, res) => {
+    try {
+      const result = await dataMapper.findAllPromo();
+      return res.render('promos', { result });
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  },
 
-	promoDetail: (req, res, next) => {
-		const id = parseInt(req.params.id, 10);
-		// const promo = promos.find((promo) => promo.id === id);
-		// if (!promo) {
-		// 	return next();
-		// }
-		// res.render('promoDetail', { promo });
-		client.query(`SELECT * FROM "promo" WHERE "id" = ${id};`).then((result) => {
-			const promo = result.rows[0];
-			res.render('promoDetail', { promo });
-		}).catch((error) => {
-			res.status.send(error);
-		});
-	},
+  promoDetail: async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    try {
+      const result = await dataMapper.findPromo(id);
+      if (result instanceof Error) {
+        return res.status(404).render('404', { result });
+      }
+      return res.render('promoDetail', { result });
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  },
 };
 
 module.exports = promoController;
