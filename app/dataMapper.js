@@ -34,6 +34,22 @@ const dataMapper = {
     }
     return result;
   },
+
+  addStudent: async (student) => {
+    const query = `INSERT INTO "student" 
+      ("first_name",
+      "last_name",
+      "github_username",
+      "promo_id") 
+    VALUES (
+      '${student.first_name}', 
+      '${student.last_name}', 
+      '${student.github_username}',
+      '${student.promo}');`;
+    const result = await client.query(query);
+    console.log(result);
+    return result;
+  },
 };
 
 module.exports = dataMapper;

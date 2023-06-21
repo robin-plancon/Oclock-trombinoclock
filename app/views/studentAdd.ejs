@@ -5,7 +5,7 @@
 	<p>
 		<label for="promo">Promo</label>
 		<select name="promo" id="promo">
-			<% promos.forEach(promo => { %>
+			<% result.forEach(promo => { %>
 			<option value="<%= promo.id %>"><%= promo.name %></option>
 			<% }); %>
 		</select>
