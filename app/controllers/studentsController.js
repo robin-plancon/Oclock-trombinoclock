@@ -1,7 +1,7 @@
 const dataMapper = require('../dataMapper');
 
 const studentsController = {
-  promoStudentsList: async (req, res, next) => {
+  displayPromoStudents: async (req, res, next) => {
     const id = parseInt(req.params.id, 10);
     try {
       const result = await dataMapper.findPromoStudents(id);
@@ -14,7 +14,7 @@ const studentsController = {
       return res.status(500).send(error);
     }
   },
-  studentDetail: async (req, res, next) => {
+  displayStudentDetail: async (req, res, next) => {
     const id = parseInt(req.params.id, 10);
     try {
       const result = await dataMapper.findStudent(id);

@@ -1,7 +1,7 @@
 const dataMapper = require('../dataMapper');
 
 const promoController = {
-  promoList: async (req, res) => {
+  displayPromoList: async (req, res) => {
     try {
       const result = await dataMapper.findAllPromo();
       return res.render('promos', { result });
@@ -10,7 +10,7 @@ const promoController = {
     }
   },
 
-  promoDetail: async (req, res) => {
+  displayPromoDetail: async (req, res) => {
     const id = parseInt(req.params.id, 10);
     try {
       const result = await dataMapper.findPromo(id);
